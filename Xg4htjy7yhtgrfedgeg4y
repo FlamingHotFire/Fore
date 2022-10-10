@@ -1,0 +1,60 @@
+local hook = hookfunction or hookfunc or replace_closure
+local hooks = {}
+local hiddendata = {getgenv().Remote_String_Data_IKS}
+
+pcall(function()
+    hooks[1] = hook(print,function(...)
+        if table.find(hiddendata, tostring(...)) then
+            return hooks[1](':|')
+        end
+        return hooks[1](...)
+    end)
+    hooks[2] = hook(warn,function(...)
+        if table.find(hiddendata, tostring(...)) then
+            return hooks[2](':|')
+        end
+        return hooks[2](...)
+    end)
+    hooks[3] = hook(appendfile,function(...)
+        if table.find(hiddendata, tostring(...)) then
+            return hooks[3](':|')
+        end
+        return hooks[3](...)
+    end)
+    hooks[4] = hook(writefile,function(...)
+        if table.find(hiddendata, tostring(...)) then
+            return hooks[4](':|')
+        end
+        return hooks[4](...)
+    end)
+    hooks[5] = hook(rconsoleprint,function(...)
+        if table.find(hiddendata, tostring(...)) then
+            return hooks[5](':|')
+        end
+        return hooks[5](...)
+    end)
+    hooks[6] = hook(rconsoleinfo,function(...)
+        if table.find(hiddendata, tostring(...)) then
+            return hooks[6](':|')
+        end
+        return hooks[6](...)
+    end)
+    hooks[7] = hook(rconsolewarn,function(...)
+        if table.find(hiddendata, tostring(...)) then
+            return hooks[7](':|')
+        end
+        return hooks[7](...)
+    end)
+    hooks[8] = hook(rconsoleerr,function(...)
+        if table.find(hiddendata, tostring(...)) then
+            return hooks[8](':|')
+        end
+        return hooks[8](...)
+    end)
+    hooks[9] = hook(printconsole,function(...) 
+        if table.find(hiddendata, tostring(...)) then
+            return hooks[9](':|')
+        end
+        return hooks[9](...)
+    end)
+end)
