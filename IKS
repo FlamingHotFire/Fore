@@ -2,6 +2,7 @@
 -- // Protected by Flame productions
 
 coroutine.wrap(function()
+    repeat wait() until game:IsLoaded() and game.Players.LocalPlayer do end
     local bb = game:GetService('VirtualUser')
     game:service'Players'.LocalPlayer.Idled:connect(function()
         bb:CaptureController()
